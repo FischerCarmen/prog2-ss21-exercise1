@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//https://github.com/FischerCarmen/prog2-ss21-exercise1
 class checkPasswordTest {
 
     @Test
