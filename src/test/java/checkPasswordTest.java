@@ -66,4 +66,11 @@ class checkPasswordTest {
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
+
+    @Test
+    void checkPasswordRight() {
+        String right = "!1kleinGro?";
+        boolean actual = checkPassword.checkPassword(right);
+        assertSame(true, actual);
+    }
 }
