@@ -13,6 +13,9 @@ public class checkPassword {
         else if(!password.matches(".*[A-Z].*")){
             return false;
         }
+        else if(!password.matches(".*[a-z].*")){
+            return false;
+        }
         else return true;
     }
 }
