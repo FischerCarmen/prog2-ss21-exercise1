@@ -52,4 +52,18 @@ class checkPasswordTest {
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
+
+    @Test
+    void checkPasswordFalse8() {
+        String wrong = "Passwort!2222";
+        boolean actual = checkPassword.checkPassword(wrong);
+        assertSame(false, actual);
+    }
+
+    @Test
+    void checkPasswordFalse9() {
+        String wrong = "|\\§\"&={[]}~Aa1!";
+        boolean actual = checkPassword.checkPassword(wrong);
+        assertSame(false, actual);
+    }
 }
