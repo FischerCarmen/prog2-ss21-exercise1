@@ -38,4 +38,11 @@ class checkPasswordTest {
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
+
+    @Test
+    void checkPasswordFalse6() {
+        String wrong = "KeineSonderzeichn1";
+        boolean actual = checkPassword.checkPassword(wrong);
+        assertSame(false, actual);
+    }
 }
