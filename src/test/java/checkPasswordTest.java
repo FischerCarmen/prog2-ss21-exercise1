@@ -45,4 +45,11 @@ class checkPasswordTest {
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
+
+    @Test
+    void checkPasswordFalse7() {
+        String wrong = "Passwort!234";
+        boolean actual = checkPassword.checkPassword(wrong);
+        assertSame(false, actual);
+    }
 }
