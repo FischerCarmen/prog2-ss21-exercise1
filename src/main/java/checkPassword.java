@@ -22,6 +22,9 @@ public class checkPassword {
         else if(!password.matches(".*[()#$?!%/@].*")){
             return false;
         }
+        else if(password.matches(".*(123|234|345|456|567|678|789).*")){
+            return false;
+        }
         else return true;
     }
 }
