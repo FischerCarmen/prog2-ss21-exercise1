@@ -6,63 +6,63 @@ import static org.junit.jupiter.api.Assertions.*;
 class checkPasswordTest {
 
     @Test
-    void checkPasswordFalse1() {
+    void checkPasswordToLong() {
         String wrong = "viiiiiiieeeeeeeelllllzzzzzzzuuuuuullllaaaannnngggeee";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse2() {
+    void checkPasswordToShort() {
         String wrong = "kurz";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse3() {
+    void checkPasswordNoUppercase() {
         String wrong = "nurkleinbuchstaben";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse4() {
+    void checkPasswordNoLowercase() {
         String wrong = "NURGROẞBUCHSTABEN";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse5() {
+    void checkPasswordNoNumbers() {
         String wrong = "EsFehlenDieZahlen";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse6() {
+    void checkPasswordNoSpecialCharacters() {
         String wrong = "KeineSonderzeichn1";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse7() {
+    void checkPasswordSuccessiveNumbers() {
         String wrong = "Passwort!234";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse8() {
+    void checkPasswordToManySameNumbers() {
         String wrong = "Passwort!2222";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
     }
 
     @Test
-    void checkPasswordFalse9() {
+    void checkPasswordIllegalCharacters() {
         String wrong = "|\\§\"&={[]}~Aa1!";
         boolean actual = checkPassword.checkPassword(wrong);
         assertSame(false, actual);
