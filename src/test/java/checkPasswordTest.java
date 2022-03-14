@@ -6,72 +6,68 @@ import static org.junit.jupiter.api.Assertions.*;
 class checkPasswordTest {
 
     @Test
-    void checkPasswordToLong() {
+    void checkPasswordTooLong() {
         String wrong = "viiiiiiieeeeeeeelllllzzzzzzzuuuuuullllaaaannnngggeee";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasRightLenght(wrong));
     }
 
     @Test
-    void checkPasswordToShort() {
+    void checkPasswordTooShort() {
         String wrong = "kurz";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasRightLenght(wrong));
     }
 
     @Test
     void checkPasswordNoUppercase() {
         String wrong = "nurkleinbuchstaben";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasUpperCase(wrong));
     }
 
     @Test
     void checkPasswordNoLowercase() {
         String wrong = "NURGROẞBUCHSTABEN";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasLowerCase(wrong));
     }
 
     @Test
     void checkPasswordNoNumbers() {
         String wrong = "EsFehlenDieZahlen";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasNumbers(wrong));
     }
 
     @Test
     void checkPasswordNoSpecialCharacters() {
         String wrong = "KeineSonderzeichn1";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertFalse(checkPassword.hasSpecialCharacter(wrong));
     }
 
     @Test
-    void checkPasswordSuccessiveNumbers() {
-        String wrong = "Passwort!234";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+    void checkPasswordConsecutiveNumbers() {
+        String wrong = "Passwort[234";
+        assertTrue(checkPassword.hasConsecutiveNumbers(wrong));
     }
 
     @Test
-    void checkPasswordToManySameNumbers() {
+    void checkPasswordTooManySameNumbers() {
         String wrong = "Passwort!2222";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        assertTrue(checkPassword.has3SameNumberAfter(wrong));
     }
 
     @Test
     void checkPasswordIllegalCharacters() {
-        String wrong = "|\\§\"&={[]}~Aa1!";
-        boolean actual = checkPassword.checkPassword(wrong);
-        assertSame(false, actual);
+        String wrong = "]}Aa1468?!";
+        assertFalse(checkPassword.hasOnlyLegalChars(wrong));
     }
 
     @Test
     void checkPasswordRight() {
-        String right = "!1kleinGro?";
-        boolean actual = checkPassword.checkPassword(right);
-        assertSame(true, actual);
+        String right = ")1kleinGro#";
+        assertTrue(checkPassword.checkPassword(right));
+    }
+
+    @Test
+    void checkPasswordNull() {
+        String wrong = null;
+        assertFalse(checkPassword.checkPassword(wrong));
     }
 }
